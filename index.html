@@ -1,0 +1,915 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adii House Rents</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="style.css" rel="stylesheet">
+  <!--font-awesome css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!--font-awesome js-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.js">
+  <style>
+   body.dark-mode * {
+  background-color: black !important;
+  color: #ffffff !important;
+
+}
+ .video-container .dark-mode{ background-color: none; color: #fff;}
+    .video-container { height: 100vh; width: 100%; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;  }
+    .background-clip{position: absolute; right: 0; bottom: 0; z-index: -1; }
+
+@media(min-aspect-ratio:16/9){.background-clip{width: 100%; height: auto;}}
+@media(max-aspect-ratio:16/9){.background-clip{width: auto; height: 100%;}}
+
+.content{text-align: center;}
+.content h1{font-size: 35px; color: #ffffff; margin-bottom: 50px; opacity: 0.5;}
+
+.rentbtn {
+  display: inline-block; /* Ku daran si uu ballac u yeesho */
+  padding: 12px 24px;
+  background: #1e272e;
+  color: white;
+  border: 1px solid #ddd;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.3s;
+  text-decoration: none; /* Link ka qurxin */
+  z-index: 1;
+}
+
+.rentbtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #2a7242;
+  transform: skewX(-30deg);
+  transition: all 0.5s;
+  z-index: 0; /* Hoos dhig overlay */
+}
+
+.rentbtn:hover::before {
+  left: 100%;
+}
+
+.rentbtn span {
+  position: relative;
+  z-index: 1; /* Si text-ku dusha ugu jiro */
+}
+
+
+.testimonial-card {
+  transition: transform 0.3s ease-in-out;
+  border-radius: 20px;
+  background-color: #fff;
+  border: none;
+  color: #000;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.star-rating i {
+  font-size: 18px;
+  margin: 0 1px;
+}
+footer a:hover {
+  color: #ffc107; /* Bootstrap warning color */
+  text-decoration: underline;
+}
+
+
+  .text-danger {
+    font-size: 0.9em;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .form-control::placeholder{color: #555;}
+  body.dark-mode .form-control::placeholder{color: #fff;}
+
+  .navbar-nav .nav-link {
+  transition: opacity 0.3s ease;
+}
+
+/* Marka link kasta hover/focus uu helo */
+.navbar-nav:hover .nav-link,
+.navbar-nav:focus-within .nav-link {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+/* Marka link gaar ah la saaro hover/focus, isagu ha muuqdo si buuxda */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  opacity: 3 !important;
+}
+
+</style>
+</head><body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-6 sticky-top ">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" style="color:rgb(21, 108, 76)"><i class="fa-solid fa-house me-1"></i>Adii House Rents</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto ">
+          <li class="nav-item "><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#search">Search House</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recent">Recent Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testmonial">Testimonial</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Our Services</a></li>
+          <li class="nav-item"><a href="#rent"><button id="btn" class="btn btn-warning mb-2 ">Rent Now</button></a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact-us">Contact Us</a></li>
+         <li> <button id="toggleDark" class="btn btn-outline-dark btn-sm"><i id="darkIcon" class="fa-solid fa-moon"></i></button><li>
+        </ul>
+      </div>
+    </div>
+  </nav>  <!-- Hero Section --> 
+  <section id="home">
+  <div class="video-container">
+    <video autoplay loop muted plays-inline class="background-clip">
+      <source src="img/video3.mp4" type="video/mp4">
+    </video>
+    <div class="content" data-aos="fade-down" data-aos-delay="300">
+      <h1>Ready to Move In? Let Adii Find Your Next Home</h1>
+      <a href="#recent" class="rentbtn">Start Renting</a>
+    </div>
+    </div>
+    </section>
+  <!--what we over-->
+<section id="programs" class="py-5 bg-light text-center mt-4 py-6" data-aos="fade-up">
+      <div class="container">
+          <div class="heading2 text-warning" data-aos="fade-up">Available Houses</div>
+        </div>
+        <!--part 1-->
+    <div class="container text-center ">
+      <h2 class="mb-4 mt-4" data-aos="fade-up">New Apartments</h2>
+    <div class="container py-5">
+            <div class="row g-4 mb-2">
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="100">
+         <div class="card property-card">
+    <img src="img/apart1.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">New Apartment</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> Waberi,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $300/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i><strong> Bedrooms:</strong> 2</p>
+      <p class="card-text"><strong> Description:</strong>A spacious apartment with balcony and ideal for couples.</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="400">
+          <div class="card property-card">
+    <img src="img/apart2.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">City Center Studio</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> KM4, Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $180/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 1</p>
+      <p class="card-text"><strong> Description:</strong>Cozy and modern studio apartment close to all major shops and cafes.
+</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="700">
+<div class="card property-card">
+    <img src="img/apart3.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Family Apartment</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> Hodan, Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $350/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 3</p>
+      <p class="card-text"><strong> Description:</strong>A family-friendly unit with large living room and shared backyard.</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="1000">
+         <div class="card property-card">
+    <img src="img/apart4.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Modern Apartment</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>Hodan, Mogadishu.</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $270/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 2</p>
+      <p class="card-text"><strong> Description:</strong>Stylish and modern with open kitchen design and strong security system.</p>
+    </div>
+  </div>
+      </div>
+        </div>
+         </div>
+      </div>
+                  <!--part 2-->
+
+                  <div class="container text-center ">
+      <h2 class="mb-4 mt-4" data-aos="fade-up"> One-Story Houses</h2>
+    <div class="container py-5">
+            <div class="row g-4 mb-2">
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="100">
+         <div class="card property-card">
+    <img src="img/onestory1.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Classic Somali House</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>Wadajir,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $400/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 3</p>
+      <p class="card-text"><strong> Description:</strong>Traditional home layout with spacious courtyard and privacy wall.</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="400">
+          <div class="card property-card">
+    <img src="img/onestory2.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Renovated Home</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> Shibis,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $350/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 2</p>
+      <p class="card-text"><strong> Description:</strong>Newly renovated with tiled floors, modern windows, and solar panels
+</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="700">
+<div class="card property-card">
+    <img src="img/onestory3.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Cozy One Story</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> Heliwa,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $300/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 2</p>
+      <p class="card-text"><strong> Description:</strong>Simple yet comfortable with shaded patio and water tank.</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="1000">
+         <div class="card property-card">
+    <img src="img/onestory4.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Minimalist House</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>Kaxda,Mogadishu.</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $320/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 3</p>
+      <p class="card-text"><strong> Description:</strong>Clean design with fresh paint, two bathrooms, and secure gates.</p>
+    </div>
+  </div>
+      </div>
+        </div>
+         </div>
+      </div>
+
+<!--part 3-->
+
+<div class="container text-center">
+      <h2 class="mb-4 mt-4" data-aos="fade-up">Luxury Villas</h2>
+    <div class="container py-5">
+            <div class="row g-4 mb-2">
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="100">
+         <div class="card property-card">
+    <img src="img/luxury1.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Beachfront Villa</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>Jazera,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $1200/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 4</p>
+      <p class="card-text"><strong> Description:</strong>Luxury villa with private pool, beachfront access, and glass walls..</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="400">
+          <div class="card property-card">
+    <img src="img/luxury2.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Royal Villa</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>Zoobe,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $1000/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 5</p>
+      <p class="card-text"><strong> Description:</strong>High-end finishes, private parking, and lush garden surrounding the villa.
+</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="700">
+<div class="card property-card">
+    <img src="img/luxury3.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Executive Villa</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong> Airport,Mogadishu</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $2000/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 4</p>
+      <p class="card-text"><strong> Description:</strong>Gated villa with large terrace, solar backup, and fully furnished interior.</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-down" data-aos-delay="1000">
+         <div class="card property-card">
+    <img src="img/luxury4.jpg" class="card-img-top" alt="Modern Apartment">
+    <div class="card-body">
+      <h5 class="card-title">Green Compound Villa</h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt me-2 text-warning"></i><strong>Location:</strong>KM5,Mogadishu.</p>
+      <p class="card-text"><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $1100/month</p>
+      <p class="card-text"><i class="fa-solid fa-bed"></i> <strong>Bedrooms:</strong> 4</p>
+      <p class="card-text"><strong> Description:</strong>Quiet residential compound with security, modern kitchen, and garage.</p>
+    </div>
+  </div>
+      </div>
+        </div>
+         </div>
+      </div>
+        </div>
+        <div><a class="nav-link" data-aos="fade-up" data-aos-delay="200" href="#rent"><button id="btn" class="btn btn-warning  mb-2">Rent Now</button></a></div>
+      
+    
+  
+    
+  </section> 
+
+
+
+
+
+  <section id="search">
+ <!-- ✅ Search Form -->
+  <div class="form-box p-3 border text-align-center mt-4">
+  <h2>Search Properties</h2>
+  <form id="search-form" onsubmit="return false;">
+      <input type="text" id="search-location" class="form-control mb-2" placeholder="Enter location">
+      <input type="number" id="search-bedrooms" class="form-control mb-2" placeholder="Number of bedrooms">
+      <input type="number" id="search-price" class="form-control mb-2" placeholder="Max price">
+      <button type="button" class="btn btn-warning w-50" onclick="searchHouse()">Search</button>
+    </form>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="houseModal" tabindex="-1" aria-labelledby="houseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="houseTitle">House Info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="houseImage" src="" alt="House Image" class="img-fluid mb-3" />
+          <p id="houseDescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- About Section -->  <section id="about" class="py-5 bg-light">
+    <div class="container" >
+          <div class="heading2" data-aos="fade-up">About Us</div>
+        </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4" data-aos="fade-right">
+          <img src="img/view1.jpg" class="img-fluid rounded" alt="">
+        </div>
+        <div class="col-md-4 text-center" data-aos="fade-up">
+        <h3><span class="text-primary">Creating</span> <span class="text-warning">Comfortable,</span> <span class="text-warning">Affordable,</span><span class="text-primary"> and </span><span class="text-danger">Trusted</span> <span class="text-primary">Homes for You</span></h3>
+<p class="mt-3">
+At Adii House Rents, we understand that finding the perfect home is more than just a transaction it’s about building a place where memories are made. 
+We offer a wide selection of quality rental homes tailored to fit your lifestyle and budget. 
+Our dedicated team is committed to making your rental experience smooth, transparent, and hassle-free.
+Whether you’re looking for a cozy apartment or a spacious villa, we’re here to help you find a space you’ll love to call home.
+</p>
+      <a href="explore.html" class="btn btn-warning  mt-3" data-aos="fade-up">Explore</a>
+        </div>
+        <div class="col-md-4" data-aos="fade-left">
+          <img src="img/view2.jpg" class="img-fluid rounded" alt="">
+        </div>
+      </div>
+    </div>
+  </section>  <!--recent Advice--> <section class="py-5 bg-light" id="recent">
+  <div class="container">
+    <h2 class="text-center mb-4">Recent Advice</h2>
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-4" data-aos="fade-down" data-aos-delay="100">
+        <div class="card h-100 shadow">
+          <img src="img/right home.jpg" class="card-img-top" alt="House Tips">
+          <div class="card-body">
+            <h5 class="card-title">Choosing the Right Home</h5>
+            <p class="card-text">Learn what to consider before renting your next house  location, safety, and style.</p>
+            <a href="#search" class="btn btn-warning">Search Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4" data-aos="fade-down" data-aos-delay="200">
+        <div class="card h-100 shadow">
+          <img src="img/interior trend.jpg" class="card-img-top" alt="Interior Design">
+          <div class="card-body">
+            <h5 class="card-title">Interior Trends 2025</h5>
+            <p class="card-text">Discover the latest design ideas to refresh your space with color and creativity.</p>
+            <a href="#search" class="btn btn-warning">Search Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4" data-aos="fade-down" data-aos-delay="300">
+        <div class="card h-100 shadow">
+          <img src="img/advicebudget.jpg" class="card-img-top" alt="Budget Tips">
+          <div class="card-body">
+            <h5 class="card-title">Renting on a Budget</h5>
+            <p class="card-text">Simple ways to save money while decorating and managing your monthly rent.</p>
+            <a href="#search" class="btn btn-warning">Search Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+  <section id="testmonial" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4" data-aos="fade-up">What Our Customers Say</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4" data-aos="fade-up">
+
+      <!-- Testimonial Card -->
+      <div class="col">
+        <div class="card testimonial-card h-100 shadow-sm text-center p-3">
+          <img src="img/customer1.jpg" class="rounded-circle mx-auto mt-4" alt="Customer" style="width: 100px; height: 100px;">
+          <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="card-title mb-2">Ahmed Abdi</h5>
+            <div class="star-rating mb-3">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+            </div>
+            <p class="card-text">Absolutely amazing! The whole process was smooth, and the team went above and beyond. I’ll definitely recommend them to everyone.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="col">
+        <div class="card testimonial-card h-100 shadow-sm text-center p-3">
+          <img src="img/customer3.jpg" class="rounded-circle mx-auto mt-4" alt="Customer" style="width: 100px; height: 100px;">
+          <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="card-title mb-2">Jihan Abdullahi</h5>
+            <div class="star-rating mb-3">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star-half-alt text-warning"></i>
+            </div>
+           <p class="card-text">Great experience overall. Just a minor delay, but their team handled it professionally. I would definitely use them again.</p>
+          </div>
+        </div>
+      </div>
+<!--testmonial card 3-->
+<div class="col">
+        <div class="card testimonial-card h-100 shadow-sm text-center p-3">
+          <img src="img/customer2.jpg" class="rounded-circle mx-auto mt-4" alt="Customer" style="width: 100px; height: 100px;">
+          <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="card-title mb-2">Geedi Raage</h5>
+            <div class="star-rating mb-3">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+            </div>
+           <p class="card-text">It was okay. The service was decent, but there’s room for improvement in terms of follow-up and speed.</p>
+          </div>
+        </div>
+      </div>
+      <!--testmonial card 4-->
+      <div class="col">
+        <div class="card testimonial-card h-100 shadow-sm text-center p-3">
+          <img src="img/customer4.jpg" class="rounded-circle mx-auto mt-4" alt="Customer" style="width: 100px; height: 100px;">
+          <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="card-title mb-2">Adna Omar</h5>
+            <div class="star-rating mb-3">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+            </div>
+            <p class="card-text">Perfect service from start to finish! I’m very impressed with their attention to detail and friendly approach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <!-- Services --> <section id="services" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Our Services</h2>
+    <div class="row g-4" data-aos="fade-up">
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4">
+          <div class="icon-box mb-3">
+            <i class="fas fa-home"></i>
+          </div>
+          <h5>House Rentals</h5>
+          <p>We provide a variety of modern and affordable houses for rent in prime locations.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-card text-center p-4">
+          <div class="icon-box mb-3">
+            <i class="fas fa-pencil-ruler"></i>
+          </div>
+          <h5>Interior Design</h5>
+          <p>Transform your space with our creative interior design services tailored to your style.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-card text-center p-4">
+          <div class="icon-box mb-3">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h5>Consultation</h5>
+          <p>Need help choosing the right property? Our experts are here to guide you step-by-step.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ✅ Post House Form -->
+  <section id="rent" class="form-section" data-aos="fade-up">
+  <div class="form-box">
+    <h2>Post Your House for Rent</h2>
+    <form id="rent" action="https://formspree.io/f/xovljlal" method="POST">
+      <input type="text" name="name" class="form-control" class="text-danger" placeholder="Your Name" required>
+      <input type="text" name="phone" class="form-control" class="text-danger" placeholder="Your Phone" required>
+      <input type="email" name="email" class="form-control" class="text-danger" placeholder="Your Email" required>
+      <input type="text" name="title" class="form-control" class="text-danger" placeholder="House Title" required>
+      <input type="text" name="location" class="form-control" class="text-danger" placeholder="Location" required>
+      <input type="number" name="price" class="form-control" class="text-danger" placeholder="Price" required>
+      <textarea name="description" class="form-control" class="text-danger" placeholder="Description" rows="4" required></textarea>
+      <button type="submit" class="btn-warning w-100 mt-2">Post Property</button>
+    </form>
+  </div>
+
+  </section>
+  
+  <!-- Subscribe -->  <section id="contact-us" class="py-5" >
+    <div class="container text-center text-white mt-4" data-aos="fade-up">
+      <h3>Ready to Move? Contact Us Today</h3>
+      <hr>
+      <p>Sign-up Now to receive news and updates.</p>
+      <form id="contactForm" class="mx-auto text-start justify-content-center"  style="max-width: 300px;" action="https://formspree.io/f/xovljlal">
+        <div class="mb-3">
+          <input type="text" name="name" class="form-control  w-100" placeholder="Name">
+          </div>
+          <div class="mb-3">
+          <input type="text" name="phone" class="form-control  w-100" placeholder="Phone">
+          </div>
+          <div class="mb-3">
+          <input type="email" name="email" class="form-control  w-100" placeholder="Email">
+          </div>
+          <button type="submit" id="contact-btn" class="btn btn-warning w-100" >Send Message</button>
+        </form>
+         <div id="success-alert" class="alert alert-success mt-3 d-none" role="alert">
+          Message sent successfully!
+        </div>
+
+
+      <small class="d-block mt-4 mb-4  ">We respect your privacy</small>
+    </div>
+    <footer class="bg-dark text-white pt-5">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Brand & Description -->
+      <div class="col-md-4">
+        <h4 class="fw-bold text-warning">Adii House Rents</h4>
+        <p>We help you find elegant and affordable homes tailored to your lifestyle.</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="col-md-2">
+        <h6 class="text-uppercase fw-bold">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="#services" class="text-white text-decoration-none">Our Services</a></li>
+          <li><a href="#programs" class="text-white text-decoration-none">Programs</a></li>
+          <li><a href="#contact-us" class="text-white text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3">
+        <h6 class="text-uppercase fw-bold">Contact</h6>
+        <p><i class="fas fa-map-marker-alt me-2 text-warning"></i>Mogadishu, Somalia</p>
+        <p><i class="fas fa-phone me-2 text-warning"></i>+252 61 946 4994</p>
+        <p><i class="fas fa-envelope me-2 text-warning"></i>info@adiihouserents.com</p>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-3">
+        <h6 class="text-uppercase fw-bold">Follow Us</h6>
+        <div class="d-flex gap-3">
+          <a href="https://www.facebook.com/share/19Sx5RKoAb/?mibextid=qi2Omg" class="text-white fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white fs-5"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="https://whatsapp.com/dl/" class="text-white fs-5"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-top mt-4">
+    <div class="text-center pb-3">
+      <small>&copy; 2025 Adii House Rents. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+  </section>
+
+    <!-- Scripts -->  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();
+//darkmode
+  const toggleBtn = document.getElementById("toggleDark");
+  const icon = document.getElementById("darkIcon");
+
+  toggleBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+
+    // Toggle icon
+    if (document.body.classList.contains("dark-mode")) {
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
+    } else {
+      icon.classList.remove("fa-sun");
+      icon.classList.add("fa-moon");
+    }
+  });
+
+
+   $(document).ready(function () {
+    $.validator.addMethod("lettersOnly", function (value, element) {
+      return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+    }, "Name must contain only letters.");
+    $.validator.addMethod("numbersOnly", function (value, element) {
+      return this.optional(element) || /^[0-9]+$/.test(value);
+    }, "Phone must contain only numbers.");
+    $("#contactForm").validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 2,
+          lettersOnly: true
+        },
+        phone: {
+          required: true,
+          minlength: 10,
+          numbersOnly: true
+        },
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: "Please enter your name.",
+          minlength: "Name must be at least 2 characters.",
+          lettersOnly: "Name must not contain numbers."
+        },
+        phone: {
+          required: "Please enter your phone number.",
+          minlength: "Phone number must be at least 10 digits.",
+          numbersOnly: "Phone must not contain letters."
+        },
+        email: {
+          required: "Please enter your email.",
+          email: "Please enter a valid email address."
+        }
+      },
+      submitHandler: function (form) {
+        $('#success-alert').removeClass('d-none');
+        form.reset();
+        setTimeout(function () {
+          $('#success-alert').addClass('d-none');
+        }, 3000);
+      }
+    });
+  });
+
+
+const houses = [
+  {
+    title: "New Apartment",
+    location: "Waberi,Mogadishu",
+    price: 300,
+    bedrooms: 2,
+    description: "A spacious apartment with balcony and ideal for couples.",
+    image: "img/apart1.jpg"
+  },
+  {
+    title: "City Center Studio",
+    location: "KM4,Mogadishu",
+    price: 180,
+    bedrooms: 1,
+    description: "Cozy and modern studio apartment close to all major shops and cafes.",
+    image: "img/apart2.jpg"
+  },
+  {
+    title: "Family Apartment",
+    location: "Hodan,Mogadishu",
+    price: 350,
+    bedrooms: 3,
+    description: "A family-friendly unit with large living room and shared backyard.",
+    image: "img/apart3.jpg"
+  },
+  {
+    title: "Modern Apartment",
+    location: "Hodan,Mogadishu",
+    price: 270,
+    bedrooms: 2,
+    description: "Stylish and modern with open kitchen design and strong security system.",
+    image: "img/apart4.jpg"
+  },
+  //one story
+  {
+    title: "Classic Somali House",
+    location: "Wadajir,Mogadishu",
+    price: 400,
+    bedrooms: 3,
+    description: "Traditional home layout with spacious courtyard and privacy wall.",
+    image: "img/onestory1.jpg"
+  },
+  {
+    title: "Renovated Home",
+    location: "Shibis,Mogadishu",
+    price: 350,
+    bedrooms: 2,
+    description: "Newly renovated with tiled floors, modern windows, and solar panels.",
+    image: "img/onestory2.jpg"
+  },
+  {
+    title: "Cozy One Story",
+    location: "Heliwa,Mogadishu",
+    price: 300,
+    bedrooms: 2,
+    description: "Simple yet comfortable with shaded patio and water tank.",
+    image: "img/onestory3.jpg"
+  },
+  {
+    title: "Minimalist House",
+    location: "Kaxda,Mogadishu",
+    price: 320,
+    bedrooms: 3,
+    description: "Clean design with fresh paint, two bathrooms, and secure gates.",
+    image: "img/onestory4.jpg"
+  },
+  {
+    title: "Beachfront Villa",
+    location: "Jazera,Mogadishu",
+    price: 1200,
+    bedrooms: 4,
+    description: "Luxury villa with private pool, beachfront access, and glass walls.",
+    image: "img/luxury1.jpg"
+  },
+  {
+    title: "Royal Villa",
+    location: "Zoobe,Mogadishu",
+    price: 1000,
+    bedrooms: 5,
+    description: "High-end finishes, private parking, and lush garden surrounding the villa.",
+    image: "img/luxury2.jpg"
+  },
+  {
+    title: "Executive Villa",
+    location: "Airport,Mogadishu",
+    price: 2000,
+    bedrooms: 4,
+    description: "Gated villa with large terrace, solar backup, and fully furnished interior.",
+    image: "img/luxury3.jpg"
+  },
+  {
+    title: "Green Compound Villa",
+    location: "KM5,Mogadishu",
+    price: 1100,
+    bedrooms: 4,
+    description: "Quiet residential compound with security, modern kitchen, and garage.",
+    image: "img/luxury4.jpg"
+  }
+];
+
+function searchHouse() {
+      const location = document.getElementById("search-location").value.toLowerCase().trim();
+      const bedrooms = parseInt(document.getElementById("search-bedrooms").value);
+      const price = parseInt(document.getElementById("search-price").value);
+
+      const found = houses.find(h =>
+        (!location || h.location.toLowerCase().includes(location)) &&
+        (!bedrooms || h.bedrooms == bedrooms) &&
+        (!price || h.price <= price)
+      );
+
+      if (found) {
+        document.getElementById("houseTitle").innerText = found.title;
+        document.getElementById("houseImage").src = found.image;
+        document.getElementById("houseDescription").innerText = `
+          Location: ${found.location}
+          \nBedrooms: ${found.bedrooms}
+          \nPrice: $${found.price}
+          \n\n${found.description}
+        `;
+
+        const myModal = new bootstrap.Modal(document.getElementById('houseModal'));
+        myModal.show();
+      } else {
+        alert("Sorry, we did'nt find a house that matches your information.");
+      }
+    }
+
+    
+
+$(document).ready(function () {
+  // Rule: magaca number ma laha
+  $.validator.addMethod("noNumbers", function (value, element) {
+    return this.optional(element) || /^[^\d]+$/.test(value);
+  }, "Name cannot contain numbers");
+
+  $("#rent").validate({
+    rules: {
+      name: {
+        required: true,
+          minlength: 2,
+          lettersOnly: true
+        },
+      phone: {
+        required: true,
+          minlength: 10,
+          numbersOnly: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      title: "required",
+      location: "required",
+      price: {
+        required: true,
+        number: true
+      },
+      description: "required"
+    },
+    messages: {
+     name: {
+          required: "Please enter your name.",
+          minlength: "Name must be at least 2 characters.",
+          lettersOnly: "Name must not contain numbers."
+        },
+        phone: {
+          required: "Please enter your phone number.",
+          minlength: "Phone number must be at least 10 digits.",
+          numbersOnly: "Phone must not contain letters."
+        },
+        email: {
+          required: "Please enter your email.",
+          email: "Please enter a valid email address."
+        },
+      title: "Please enter the house title",
+      location: "Please enter the location",
+      price: "Please enter the price",
+      description: "Please enter the description"
+    },
+    errorClass: "text-danger",
+    errorElement: "small",
+    highlight: function (element) {
+      $(element).addClass("is-invalid");
+    },
+    unhighlight: function (element) {
+      $(element).removeClass("is-invalid");
+    }
+  });
+});
+
+</script>
+  </body></html>
